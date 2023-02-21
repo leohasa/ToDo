@@ -1,4 +1,4 @@
-package com.ipc2.datos;
+package com.ipc2.todo.datos;
 
 import java.sql.SQLException;
 import java.sql.DriverManager;
@@ -7,9 +7,9 @@ import java.sql.Connection;
 public class Conexion {
 
     private Connection conexion = null;
-    private String url = "jdbc:mysql://localhost:3307/todo_database";
-    private String user = "asael";
-    private String password = "123";
+    private final String url = "jdbc:mysql://localhost:3307/todo_database";
+    private final String user = "asael";
+    private final String password = "123";
 
     public Connection obtenerConexion() {
         try {

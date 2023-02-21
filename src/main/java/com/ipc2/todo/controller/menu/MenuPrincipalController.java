@@ -1,10 +1,11 @@
-package com.ipc2.controller;
+package com.ipc2.todo.controller.menu;
 
-import com.ipc2.controller.tarea.TareaController;
-import com.ipc2.modelo.Session;
-import com.ipc2.view.LoginView;
-import com.ipc2.view.MenuPrincipal;
-import com.ipc2.view.tarea.TareaView;
+import com.ipc2.todo.controller.inicio.InicioController;
+import com.ipc2.todo.controller.tarea.TareaController;
+import com.ipc2.todo.modelo.Session;
+import com.ipc2.todo.view.inicio.InicioView;
+import com.ipc2.todo.view.menu.MenuPrincipal;
+import com.ipc2.todo.view.tarea.TareaView;
 
 import java.sql.Connection;
 
@@ -20,7 +21,7 @@ public class MenuPrincipalController {
 
     public void ejecutar() {
         do {
-            menuPrincipal.mostrarMenu(Session.usuario.getUsername());
+            menuPrincipal.mostrarMenu(Session.usuario.getNombre());
             switch (menuPrincipal.getOption()) {
                 case 1 -> {
                     TareaView tareaView = new TareaView();
@@ -29,9 +30,11 @@ public class MenuPrincipalController {
                 }
                 case 2 -> {
                     System.out.println("Cerrando sesion...");
-                    LoginView loginView = new LoginView();
-                    LoginController loginController = new LoginController(loginView, conexion);
-                    loginController.ejecutar();
+                    Session.usuario = null;
+
+                    InicioView inicioView = new InicioView();
+                    InicioController inicioController = new InicioController(inicioView, conexion);
+                    inicioController.ejecutar();
                 }
                 default -> System.out.println("Opcion invalida");
             }

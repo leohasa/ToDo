@@ -1,6 +1,4 @@
-package com.ipc2.view;
-
-import com.ipc2.modelo.Session;
+package com.ipc2.todo.view.menu;
 
 import java.util.Scanner;
 public class MenuPrincipal {
@@ -12,8 +10,8 @@ public class MenuPrincipal {
         scanner = new Scanner(System.in);
     }
 
-    public void mostrarMenu(String username) {
-        System.out.println("\nBienvenido @" + username);
+    public void mostrarMenu(String nombre) {
+        System.out.println("\nBienvenido @" + nombre);
         System.out.println("1. Modulo de Tareas");
         System.out.println("2. Cerrar sesion");
 

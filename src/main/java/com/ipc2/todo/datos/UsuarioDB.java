@@ -1,6 +1,6 @@
-package com.ipc2.datos;
+package com.ipc2.todo.datos;
 
-import com.ipc2.modelo.Usuario;
+import com.ipc2.todo.modelo.Usuario;
 
 import java.sql.Connection;
 import java.sql.SQLException;

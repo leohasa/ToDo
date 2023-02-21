@@ -1,6 +1,6 @@
-package com.ipc2.view.tarea;
+package com.ipc2.todo.view.tarea;
 
-import com.ipc2.modelo.Tarea;
+import com.ipc2.todo.modelo.Tarea;
 
 import java.util.List;
 import java.util.Scanner;
@@ -8,9 +8,11 @@ import java.util.Scanner;
 public class TareaView {
 
     private final Scanner scanner;
+    private final Scanner stringScanner;
 
     public TareaView() {
         scanner = new Scanner(System.in);
+        stringScanner = new Scanner(System.in);
     }
 
     private int option;
@@ -27,10 +29,16 @@ public class TareaView {
     }
 
     public void mostrarListaTareas(List<Tarea> tareas) {
-        System.out.println("Lista de tareas");
-        for (Tarea tarea : tareas) {
-            System.out.println(tarea);
+        if(tareas.isEmpty()){
+            System.out.println("No hay tareas registradas");
         }
+        else {
+            System.out.println("Lista de tareas");
+            for (Tarea tarea : tareas) {
+                System.out.println(tarea);
+            }
+        }
+        stringScanner.nextLine();
     }
 
     public int getOption() {

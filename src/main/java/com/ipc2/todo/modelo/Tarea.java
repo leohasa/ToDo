@@ -1,4 +1,4 @@
-package com.ipc2.modelo;
+package com.ipc2.todo.modelo;
 
 import lombok.*;
 

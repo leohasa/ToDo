@@ -1,8 +1,8 @@
-package com.ipc2.controller.tarea;
+package com.ipc2.todo.controller.tarea;
 
-import com.ipc2.datos.TareaDB;
-import com.ipc2.modelo.Session;
-import com.ipc2.view.tarea.TareaView;
+import com.ipc2.todo.datos.TareaDB;
+import com.ipc2.todo.modelo.Session;
+import com.ipc2.todo.view.tarea.TareaView;
 
 import java.sql.Connection;
 

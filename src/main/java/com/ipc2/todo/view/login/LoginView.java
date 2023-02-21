@@ -1,4 +1,4 @@
-package com.ipc2.view;
+package com.ipc2.todo.view.login;
 
 import lombok.Getter;
 
@@ -17,7 +17,7 @@ public class LoginView {
     }
 
     public void show() {
-        System.out.println("\nBienvenido al sistema de tareas");
+        System.out.println("\nInicio de sesion");
         System.out.println("Ingrese su usuario y contraseña");
 
         System.out.print("Usuario: ");

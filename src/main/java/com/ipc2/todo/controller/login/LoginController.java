@@ -1,19 +1,20 @@
-package com.ipc2.controller;
+package com.ipc2.todo.controller.login;
 
-import com.ipc2.datos.UsuarioDB;
-import com.ipc2.modelo.Session;
-import com.ipc2.modelo.Usuario;
-import com.ipc2.view.LoginView;
-import com.ipc2.view.MenuPrincipal;
+import com.ipc2.todo.controller.menu.MenuPrincipalController;
+import com.ipc2.todo.datos.UsuarioDB;
+import com.ipc2.todo.modelo.Session;
+import com.ipc2.todo.modelo.Usuario;
+import com.ipc2.todo.view.login.LoginView;
+import com.ipc2.todo.view.menu.MenuPrincipal;
 
 import java.sql.Connection;
-import java.util.Optional;
 
 public class LoginController {
 
     private final Connection conexion;
     private final LoginView loginView;
     private final UsuarioDB usuarioDB;
+    private Usuario usuarioLogin;
 
     public LoginController(LoginView loginView, Connection conexion) {
         this.loginView = loginView;
@@ -27,12 +28,10 @@ public class LoginController {
         do {
             loginView.show();
             usuarioValido = validarUsuario(loginView.getUsername(), loginView.getPassword());
-            if (!usuarioValido) {
-                System.out.println("Credenciales incorrectas\n");
-            }
+            if (!usuarioValido) System.out.println("Credenciales incorrectas\n");
         }while (!usuarioValido);
 
-        Session.usuario = usuarioDB.obtenerUsuario(loginView.getUsername(), loginView.getPassword()).get();
+        Session.usuario = usuarioLogin;
         MenuPrincipal menuPrincipal = new MenuPrincipal();
         MenuPrincipalController menuPrincipalController = new MenuPrincipalController(menuPrincipal, conexion);
         menuPrincipalController.ejecutar();
@@ -40,6 +39,9 @@ public class LoginController {
 
     public boolean validarUsuario(String username, String password) {
         var oUsuario = usuarioDB.obtenerUsuario(username, password);
-        return oUsuario.isPresent();
+        if (oUsuario.isEmpty()) return false;
+
+        usuarioLogin = oUsuario.get();
+        return true;
     }
 }
