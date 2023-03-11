@@ -21,9 +21,8 @@ public class TareaView {
         System.out.println("\nModulo de tareas");
         System.out.println("1. Crear tarea");
         System.out.println("2. Listar tareas");
-        System.out.println("3. Actualizar tarea");
-        System.out.println("4. Eliminar tarea");
-        System.out.println("5. Volver");
+        System.out.println("3. Eliminar tarea");
+        System.out.println("4. Volver");
 
         option = scanner.nextInt();
     }

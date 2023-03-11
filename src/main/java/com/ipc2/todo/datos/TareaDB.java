@@ -17,10 +17,10 @@ public class TareaDB {
         this.conexion = conexion;
     }
     public void insertar(Tarea tarea) {
-        String query = "INSERT INTO TAREA (titulo, notas, prioridad, fecha_creacion, id_usuario, id_estado) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO TAREA (titulo, descripcion, prioridad, fecha_creacion, id_usuario, id_estado) VALUES (?, ?, ?, ?, ?, ?)";
         try (var preparedStatement = conexion.prepareStatement(query)) {
             preparedStatement.setString(1, tarea.getTitulo());
-            preparedStatement.setString(2, tarea.getNotas());
+            preparedStatement.setString(2, tarea.getDescripcion());
             preparedStatement.setInt(3, tarea.getPrioridad());
             preparedStatement.setString(4, tarea.getFecha_creacion().toString());
             preparedStatement.setInt(5, tarea.getIdUsuario());
@@ -32,10 +32,10 @@ public class TareaDB {
         }
     }
     public void actualizar(Tarea tarea) {
-        String query = "UPDATE TAREA SET titulo = ?, notas = ?, prioridad = ?, fecha_creacion = ?, id_usuario = ?, id_estado = ? WHERE id_tarea = ?";
+        String query = "UPDATE TAREA SET titulo = ?, descripcion = ?, prioridad = ?, fecha_creacion = ?, id_usuario = ?, id_estado = ? WHERE id_tarea = ?";
         try (var preparedStatement = conexion.prepareStatement(query)) {
             preparedStatement.setString(1, tarea.getTitulo());
-            preparedStatement.setString(2, tarea.getNotas());
+            preparedStatement.setString(2, tarea.getDescripcion());
             preparedStatement.setInt(3, tarea.getPrioridad());
             preparedStatement.setString(4, tarea.getFecha_creacion().toString());
             preparedStatement.setInt(5, tarea.getIdUsuario());
@@ -69,7 +69,7 @@ public class TareaDB {
 
                     var id = resultSet.getInt("id_tarea");
                     var titulo = resultSet.getString("titulo");
-                    var notas = resultSet.getString("notas");
+                    var notas = resultSet.getString("descripcion");
                     var prioridad = resultSet.getInt("prioridad");
                     var fecha_creacion = LocalDateTime.parse(resultSet.getString("fecha_creacion"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                     var idEstado = resultSet.getInt("id_estado");
